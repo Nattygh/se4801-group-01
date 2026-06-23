@@ -25,4 +25,10 @@ public class CourseController {
     public List<Course> getAllCourses() {
         return courseService.getAllCourses();
     }
+
+    @PostMapping("/instructor/{instructorId}")
+    public Course createCourseForInstructor(@PathVariable Long instructorId,
+                                            @RequestBody Course course) {
+        return courseService.createCourseForInstructor(instructorId, course);
+    }
 }

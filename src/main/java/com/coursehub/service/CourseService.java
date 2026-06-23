@@ -8,4 +8,6 @@ public interface CourseService {
     Course saveCourse(Course course);
 
     List<Course> getAllCourses();
+
+    Course createCourseForInstructor(Long instructorId, Course course);
 }
