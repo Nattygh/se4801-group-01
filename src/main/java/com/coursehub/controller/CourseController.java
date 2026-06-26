@@ -2,6 +2,7 @@ package com.coursehub.controller;
 
 import com.coursehub.model.Course;
 import com.coursehub.service.CourseService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class CourseController {
     }
 
     @PostMapping
-    public Course createCourse(@RequestBody Course course) {
+    public Course createCourse(@Valid @RequestBody Course course) {
         return courseService.saveCourse(course);
     }
 
@@ -28,7 +29,7 @@ public class CourseController {
 
     @PostMapping("/instructor/{instructorId}")
     public Course createCourseForInstructor(@PathVariable Long instructorId,
-                                            @RequestBody Course course) {
+                                            @Valid @RequestBody Course course) {
         return courseService.createCourseForInstructor(instructorId, course);
     }
 }

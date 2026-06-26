@@ -2,6 +2,7 @@ package com.coursehub.controller;
 
 import com.coursehub.model.Enrollment;
 import com.coursehub.service.EnrollmentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class EnrollmentController {
     }
 
     @PostMapping
-    public Enrollment createEnrollment(@RequestBody Enrollment enrollment) {
+    public Enrollment createEnrollment(@Valid @RequestBody Enrollment enrollment) {
         return enrollmentService.saveEnrollment(enrollment);
     }
 

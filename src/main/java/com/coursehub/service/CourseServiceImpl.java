@@ -1,5 +1,6 @@
 package com.coursehub.service;
 
+import com.coursehub.exception.ResourceNotFoundException;
 import com.coursehub.model.Course;
 import com.coursehub.model.Role;
 import com.coursehub.model.User;
@@ -33,7 +34,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course createCourseForInstructor(Long instructorId, Course course) {
         User user = userRepository.findById(instructorId)
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + instructorId));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + instructorId));
 
         if (user.getRole() != Role.INSTRUCTOR) {
             throw new RuntimeException("User with id " + instructorId + " is not an INSTRUCTOR");
